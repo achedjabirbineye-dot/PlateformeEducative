@@ -1,0 +1,17 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Plateforme Éducative</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    
+    <p>
+        <a href="/?lang=fr">Français</a> | 
+        <a href="/?lang=ar">العربية</a>
+    </p>
+</body>
+</html>
