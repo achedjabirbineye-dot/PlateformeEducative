@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 01:14+0100\n"
+"POT-Creation-Date: 2026-11-08 00:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-#: .\config\settings.py:109
+
+#: .\config\settings.py:110
 msgid "French"
 msgstr ""
 
-#: .\config\settings.py:110
+#: .\config\settings.py:111
 msgid "Arabic"
 msgstr ""
 
-#: .\core\views.py:4
-msgid "Bienvenue sur notre plateforme éducative !"
-msgstr "مرحبًا بكم في المنصة التعليمية!"
+#: .\core\templates\core\accueil.html:7
+msgid "Plateforme Éducative"
+msgstr "المنصة التعليمية"
+
+#: .\core\templates\core\accueil.html:13
+msgid "Nos ressources disponibles :"
+msgstr "مواردنا المتاحة:"
+
+#: .\core\templates\core\accueil.html:19
+msgid "Matière"
+msgstr "المادة"
+
+#: .\core\templates\core\accueil.html:21
+msgid "Télécharger le PDF"
+msgstr "تحميل ملف PDF"
+
+#: .\core\templates\core\accueil.html:24
+msgid "Aucune ressource n'est disponible pour le moment."
+msgstr "لا توجد موارد متاحة في الوقت الحالي."
+
+#: .\core\templates\core\accueil.html:30
+msgid "Français"
+msgstr "الفرنسية"
+

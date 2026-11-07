@@ -134,3 +134,9 @@ import os
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
+
+import os
+
+# Configuration pour les fichiers uploadés (PDF, images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
