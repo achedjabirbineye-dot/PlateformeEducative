@@ -51,3 +51,6 @@ msgstr "لا توجد موارد متاحة في الوقت الحالي."
 msgid "Français"
 msgstr "الفرنسية"
 
+#: .\core\templates\core\accueil.html:31
+msgid "Créer un compte"
+msgstr "إنشاء حساب"

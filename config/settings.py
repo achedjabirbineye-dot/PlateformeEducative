@@ -140,3 +140,4 @@ import os
 # Configuration pour les fichiers uploadés (PDF, images)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+AUTH_USER_MODEL = 'core.CustomUser'  # On indique à Django d'utiliser notre modèle utilisateur personnalisé
