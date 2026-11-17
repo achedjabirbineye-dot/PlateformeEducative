@@ -141,3 +141,5 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'core.CustomUser'  # On indique à Django d'utiliser notre modèle utilisateur personnalisé
+LOGIN_REDIRECT_URL = '/' # Où aller après la connexion (la page d'accueil)
+LOGOUT_REDIRECT_URL = '/' # Où aller après la déconnexion

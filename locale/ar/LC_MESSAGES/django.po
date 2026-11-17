@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 00:09+0100\n"
+"POT-Creation-Date: 2026-11-09 14:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,10 +47,39 @@ msgstr "تحميل ملف PDF"
 msgid "Aucune ressource n'est disponible pour le moment."
 msgstr "لا توجد موارد متاحة في الوقت الحالي."
 
+#: .\core\templates\core\accueil.html:29
+msgid "Bonjour"
+msgstr ""
+
 #: .\core\templates\core\accueil.html:30
+msgid "Rôle"
+msgstr ""
+
+#: .\core\templates\core\accueil.html:32
+msgid "Se déconnecter"
+msgstr ""
+
+#: .\core\templates\core\accueil.html:34
+msgid "Se connecter"
+msgstr ""
+
+#: .\core\templates\core\accueil.html:35
+msgid "Créer un compte"
+msgstr "إنشاء حساب"
+
+#: .\core\templates\core\accueil.html:41
 msgid "Français"
 msgstr "الفرنسية"
 
-#: .\core\templates\core\accueil.html:31
-msgid "Créer un compte"
-msgstr "إنشاء حساب"
+#: .\core\views.py:12
+msgid "Bienvenue sur notre plateforme éducative !"
+msgstr ""
+
+msgid "Bonjour"
+msgstr "مرحبا"
+
+msgid "Rôle"
+msgstr "الدور"
+
+msgid "Se déconnecter"
+msgstr "تسجيل الخروج"

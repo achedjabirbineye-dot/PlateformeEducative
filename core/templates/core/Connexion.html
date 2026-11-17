@@ -1,0 +1,19 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+</head>
+<body>
+    <h2>Se connecter</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Affiche les champs Nom d'utilisateur et Mot de passe -->
+        <button type="submit">Se connecter</button>
+    </form>
+    
+    <p><a href="{% url 'accueil' %}">Retour à l'accueil</a></p>
+</body>
+</html>
