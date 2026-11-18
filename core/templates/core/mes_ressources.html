@@ -25,9 +25,16 @@
             <td>{{ res.matiere.nom }}</td>
             <td>{{ res.date_ajout|date:"d/m/Y" }}</td>
             <td>
-                <a href="#">{% trans "Modifier" %}</a> | 
-                <a href="#">{% trans "Supprimer" %}</a>
-            </td>
+                 <a href="{% url 'modifier_ressource' res.id %}">{% trans "Modifier" %}</a> | 
+    
+    <!-- On utilise un formulaire pour la suppression (sécurité Django) -->
+                 <form action="{% url 'supprimer_ressource' res.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+                     <button type="submit" style="background:none; border:none; color:red; text-decoration:underline; cursor:pointer; padding:0;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ressource ?');">
+            {% trans "Supprimer" %}
+                     </button>
+                 </form>
+             </td>
         </tr>
         {% empty %}
         <tr>

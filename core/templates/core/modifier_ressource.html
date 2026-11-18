@@ -1,0 +1,19 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Modifier une ressource" %}</title>
+</head>
+<body>
+    <h2>{% trans "Modifier" %} : {{ ressource.titre }}</h2>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans "Enregistrer les modifications" %}</button>
+    </form>
+    
+    <p><a href="{% url 'mes_ressources' %}">{% trans "Annuler et revenir au tableau de bord" %}</a></p>
+</body>
+</html>

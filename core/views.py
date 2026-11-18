@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import InscriptionForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import RessourceForm
+from django.shortcuts import get_object_or_404 
 
 def accueil(request):
     lang = request.GET.get('lang', 'fr')
@@ -44,7 +45,9 @@ def ajouter_ressource(request):
     if request.method == 'POST':
         form = RessourceForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            ressource = form.save(commit=False)  # On ne sauvegarde pas encore pour ajouter l'auteur
+            ressource.auteur = request.user  # On assigne l'auteur
+            ressource.save()  # On sauvegarde finalement
             return redirect('accueil') # Redirige vers l'accueil après l'ajout
     else:
         form = RessourceForm()
@@ -57,3 +60,35 @@ def mes_ressources(request):
     # On filtre pour n'afficher que les ressources de ce prof précis
     ressources = Ressource.objects.filter(auteur=request.user).order_by('-date_ajout')
     return render(request, 'core/mes_ressources.html', {'ressources': ressources})
+
+
+@login_required
+@user_passes_test(est_professeur, login_url='/')
+def supprimer_ressource(request, ressource_id):
+    # On récupère la ressource, ou on affiche une erreur 404 si elle n'existe pas
+    ressource = get_object_or_404(Ressource, id=ressource_id)
+    
+    # Sécurité : on vérifie que c'est bien le prof connecté qui a créé cette ressource
+    if ressource.auteur == request.user:
+        ressource.delete()
+        
+    return redirect('mes_ressources')
+
+@login_required
+@user_passes_test(est_professeur, login_url='/')
+def modifier_ressource(request, ressource_id):
+    ressource = get_object_or_404(Ressource, id=ressource_id)
+    
+    # Sécurité : seul l'auteur peut modifier
+    if ressource.auteur != request.user:
+        return redirect('mes_ressources')
+        
+    if request.method == 'POST':
+        form = RessourceForm(request.POST, request.FILES, instance=ressource)
+        if form.is_valid():
+            form.save()
+            return redirect('mes_ressources')
+    else:
+        form = RessourceForm(instance=ressource) # On pré-remplit le formulaire avec les données existantes
+        
+    return render(request, 'core/modifier_ressource.html', {'form': form, 'ressource': ressource})
