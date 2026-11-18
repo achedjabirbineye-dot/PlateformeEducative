@@ -1,0 +1,26 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Mes Favoris" %}</title>
+</head>
+<body>
+    <h2>❤️ {% trans "Mes Favoris" %} - {{ user.username }}</h2>
+    
+    <ul>
+        {% for fav in favoris %}
+            <li style="margin-bottom: 15px;">
+                <strong>{{ fav.ressource.titre }}</strong> ({{ fav.ressource.matiere.nom }})
+                <br>
+                <a href="{{ fav.ressource.fichier.url }}" target="_blank">{% trans "Télécharger le PDF" %}</a>
+            </li>
+        {% empty %}
+            <li>{% trans "Vous n'avez pas encore de favoris." %}</li>
+        {% endfor %}
+    </ul>
+    
+    <br>
+    <p><a href="{% url 'accueil' %}">{% trans "Retour à l'accueil" %}</a></p>
+</body>
+</html>

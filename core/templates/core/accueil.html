@@ -19,6 +19,7 @@
                 ({% trans "Matière" %} : {{ ressource.matiere.nom }})
                 <br>
                 <a href="{{ ressource.fichier.url }}" target="_blank">{% trans "Télécharger le PDF" %}</a>
+                <a href="{% url 'ajouter_favori' ressource.id %}" style="text-decoration: none;">❤️ {% trans "Ajouter aux favoris" %}</a>
             </li>
         {% empty %}
             <li>{% trans "Aucune ressource n'est disponible pour le moment." %}</li>
@@ -26,7 +27,8 @@
     </ul>
     <p>
     {% if user.is_authenticated %}
-        <strong>{% trans "Bonjour" %} {{ user.username }} !</strong> 
+        <strong>{% trans "Bonjour" %} {{ user.username }} !</strong>
+        <p><a href="{% url 'mes_favoris' %}">❤️ {% trans "Mes Favoris" %}</a></p> 
         ({% trans "Rôle" %} : {{ user.get_role_display }})
         <br>
        <form action="{% url 'logout' %}" method="post" style="display:inline;">

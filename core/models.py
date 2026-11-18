@@ -52,3 +52,15 @@ class Ressource(models.Model):
 
     def __str__(self):
         return self.titre
+
+# 4. Le modèle Favori
+class Favori(models.Model):
+    utilisateur = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    ressource = models.ForeignKey(Ressource, on_delete=models.CASCADE)
+    date_ajout = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('utilisateur', 'ressource')
+
+    def __str__(self):
+        return f"{self.utilisateur.username} - {self.ressource.titre}"

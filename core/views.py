@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils import translation
-from .models import Ressource # <--- On importe le modèle
+from .models import Ressource, Matiere, Favori # <--- On importe le modèle
 from django.shortcuts import render, redirect
 from .forms import InscriptionForm
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -92,3 +92,14 @@ def modifier_ressource(request, ressource_id):
         form = RessourceForm(instance=ressource) # On pré-remplit le formulaire avec les données existantes
         
     return render(request, 'core/modifier_ressource.html', {'form': form, 'ressource': ressource})
+
+@login_required
+def ajouter_favori(request, ressource_id):
+    ressource = get_object_or_404(Ressource, id=ressource_id)
+    Favori.objects.get_or_create(utilisateur=request.user, ressource=ressource)
+    return redirect(request.META.get('HTTP_REFERER', 'accueil'))
+
+@login_required
+def mes_favoris(request):
+    favoris = Favori.objects.filter(utilisateur=request.user).order_by('-date_ajout')
+    return render(request, 'core/mes_favoris.html', {'favoris': favoris})

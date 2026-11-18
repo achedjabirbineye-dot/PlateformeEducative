@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Matiere, Ressource
+from .models import CustomUser, Matiere, Ressource, Favori 
 
 # Configuration pour afficher les utilisateurs personnalisés
 class CustomUserAdmin(UserAdmin):
@@ -15,3 +15,4 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Matiere)
 admin.site.register(Ressource)
+admin.site.register(Favori) 
