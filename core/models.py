@@ -33,11 +33,13 @@ class Ressource(models.Model):
         ('annale', 'Annale du Bac'),
         ('exercice', 'Exercice corrigé'),
         ('fiche', 'Fiche de révision'),
-    ]
+    ] # <--- Le crochet ferme la liste ICI
+
     LANGUE_CHOICES = [
         ('fr', 'Français'),
         ('ar', 'Arabe'),
     ]
+
     titre = models.CharField(max_length=200)
     fichier = models.FileField(upload_to='ressources/')
     matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE)
@@ -45,5 +47,8 @@ class Ressource(models.Model):
     langue = models.CharField(max_length=2, choices=LANGUE_CHOICES, default='fr')
     date_ajout = models.DateTimeField(auto_now_add=True)
     
+    # L'auteur de la ressource (bien en dehors de la liste TYPE_CHOICES)
+    auteur = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+
     def __str__(self):
         return self.titre

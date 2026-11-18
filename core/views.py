@@ -50,3 +50,10 @@ def ajouter_ressource(request):
         form = RessourceForm()
     
     return render(request, 'core/ajouter_ressource.html', {'form': form})
+
+@login_required
+@user_passes_test(est_professeur, login_url='/')
+def mes_ressources(request):
+    # On filtre pour n'afficher que les ressources de ce prof précis
+    ressources = Ressource.objects.filter(auteur=request.user).order_by('-date_ajout')
+    return render(request, 'core/mes_ressources.html', {'ressources': ressources})
