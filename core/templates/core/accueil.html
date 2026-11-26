@@ -1,63 +1,66 @@
+{% extends "core/base.html" %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
-<head>
-    <meta charset="UTF-8">
-    <title>{% trans "Plateforme Éducative" %}</title>
-</head>
-<body>
-    <h1>{{ message }}</h1>
-    
-    <hr>
-    <h2>{% trans "Nos ressources disponibles :" %}</h2>
-    
-    <ul>
-        {% for ressource in ressources %}
-            <li>
-                <strong>{{ ressource.titre }}</strong> 
-                ({% trans "Matière" %} : {{ ressource.matiere.nom }})
-                <br>
-                <a href="{{ ressource.fichier.url }}" target="_blank">{% trans "Télécharger le PDF" %}</a>
-                <a href="{% url 'ajouter_favori' ressource.id %}" style="text-decoration: none;">❤️ {% trans "Ajouter aux favoris" %}</a>
-            </li>
-        {% empty %}
-            <li>{% trans "Aucune ressource n'est disponible pour le moment." %}</li>
-        {% endfor %}
-    </ul>
-    <p>
-    {% if user.is_authenticated %}
-        <strong>{% trans "Bonjour" %} {{ user.username }} !</strong>
-        <p><a href="{% url 'mes_favoris' %}">❤️ {% trans "Mes Favoris" %}</a></p> 
-        ({% trans "Rôle" %} : {{ user.get_role_display }})
-        <br>
-       <form action="{% url 'logout' %}" method="post" style="display:inline;">
-    {% csrf_token %}
-    <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer; padding:0; font-size:inherit;">
-        {% trans "Se déconnecter" %}
-    </button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}">{% trans "Se connecter" %}</a> | 
-        <a href="{% url 'inscription' %}">{% trans "Créer un compte" %}</a>
-    {% endif %}
-    {% if user.role == 'prof' %}
-    <p>
-        <a href="{% url 'ajouter_ressource' %}">
-            <strong>
-                ➕ {% trans "Publier une ressource" %}
 
-            </strong>
-        </a>
-    </p>
-    <p><a href="{% url 'mes_ressources' %}">📁 {% trans "Mon Tableau de bord" %}</a></p>
-    {% endif %}
-     </p>
-    <hr>
-    
-    <p>
-        <a href="/?lang=fr">{% trans "Français" %}</a> | 
-        <a href="/?lang=ar">العربية</a>
-    </p>
-</body>
-</html>
+{% block title %}Accueil - Plateforme Éducative{% endblock %}
+
+{% block content %}
+    <div class="hero-section">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ message }}</h1>
+            <p class="col-md-8 fs-4">{% trans "Trouvez vos annales, exercices et fiches de révision pour préparer votre baccalauréat." %}</p>
+        </div>
+    </div>
+
+    <!-- Formulaire de recherche en ligne -->
+    <form method="get" action="" class="row g-3 mb-5 p-3 bg-white rounded shadow-sm">
+        <div class="col-md-4">
+            <input type="text" name="q" class="form-control" placeholder="{% trans 'Rechercher un titre...' %}" value="{{ recherche_actuelle }}">
+        </div>
+        <div class="col-md-3">
+            <select name="matiere" class="form-select">
+                <option value="">{% trans "Toutes les matières" %}</option>
+                {% for m in matieres %}
+                    <option value="{{ m.id }}">{{ m.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="type" class="form-select">
+                <option value="">{% trans "Tous les types" %}</option>
+                <option value="annale">{% trans "Annale du Bac" %}</option>
+                <option value="exercice">{% trans "Exercice corrigé" %}</option>
+                <option value="fiche">{% trans "Fiche de révision" %}</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">{% trans "Rechercher" %}</button>
+        </div>
+    </form>
+
+    <h2 class="mb-4">{% trans "Nos ressources disponibles :" %}</h2>
+
+    <div class="row">
+        {% for ressource in ressources %}
+            <div class="col-md-4 mb-4">
+                <div class="card card-ressource h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ressource.titre }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ ressource.matiere.nom }}</h6>
+                        
+                        <div class="mt-4 d-flex justify-content-between align-items-center">
+                            <a href="{{ ressource.fichier.url }}" target="_blank" class="btn btn-outline-primary btn-sm">📄 {% trans "Télécharger" %}</a>
+                            
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'ajouter_favori' ressource.id %}" class="btn-favori" title="Ajouter aux favoris">❤️</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">{% trans "Aucune ressource n'est disponible pour le moment." %}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

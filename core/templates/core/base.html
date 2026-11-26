@@ -1,0 +1,79 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Plateforme Éducative{% endblock %}</title>
+    
+    <!-- Bootstrap CSS (via internet) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Notre CSS personnalisé -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- La barre de navigation (Menu) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'accueil' %}">🎓 Plateforme Éducative</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accueil' %}">{% trans "Accueil" %}</a>
+                    </li>
+                    
+                    {% if user.is_authenticated %}
+                        <!-- Si connecté -->
+                        <li class="nav-item">
+                            <span class="nav-link text-white fw-bold">👤 {{ user.username }} ({{ user.get_role_display }})</span>
+                        </li>
+                        
+                        {% if user.role == 'prof' %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'mes_ressources' %}">📁 {% trans "Mon Tableau de bord" %}</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'mes_favoris' %}">❤️ {% trans "Mes Favoris" %}</a></li>
+                        {% endif %}
+                        
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm ms-2">{% trans "Se déconnecter" %}</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <!-- Si non connecté -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light btn-sm ms-2" href="{% url 'inscription' %}">{% trans "Créer un compte" %}</a>
+                        </li>
+                    {% endif %}
+                    
+                    <!-- Liens de langue -->
+                    <li class="nav-item ms-3 border-start border-light ps-3">
+                        <a class="nav-link d-inline" href="/?lang=fr">FR</a> | 
+                        <a class="nav-link d-inline" href="/?lang=ar">AR</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Le contenu de tes pages viendra s'insérer ici -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS (pour les menus interactifs sur mobile) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
