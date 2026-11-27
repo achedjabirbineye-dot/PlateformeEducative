@@ -7,6 +7,9 @@ from .forms import InscriptionForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import RessourceForm
 from django.shortcuts import get_object_or_404 
+import os
+from google import genai 
+from django.conf import settings
 
 def accueil(request):
     lang = request.GET.get('lang', 'fr')
@@ -103,3 +106,47 @@ def ajouter_favori(request, ressource_id):
 def mes_favoris(request):
     favoris = Favori.objects.filter(utilisateur=request.user).order_by('-date_ajout')
     return render(request, 'core/mes_favoris.html', {'favoris': favoris})
+
+    # On configure l'API avec la clé
+
+@login_required
+def assistant_ia(request):
+    reponse_ia = None
+    question_eleve = None
+
+    if request.method == 'POST':
+        question_eleve = request.POST.get('question')
+        
+        chemin_fichier = os.path.join(settings.BASE_DIR, 'data', 'cours_maths.txt')
+        with open(chemin_fichier, 'r', encoding='utf-8') as f:
+            contexte = f.read()
+        print("MA CLÉ API EST :", settings.GEMINI_API_KEY)
+        #appelation de l'IA
+        client = genai.Client(api_key=settings.GEMINI_API_KEY)
+        
+        prompt = f"""
+        Tu es un assistant pédagogique pour des élèves de Terminale au Tchad. 
+        Tu dois répondre aux questions des élèves en te basant UNIQUEMENT sur le texte ci-dessous.
+        Si la réponse ne se trouve pas dans le texte, dis poliment que tu ne sais pas.
+        Formate ta réponse de manière claire. Utilise le Markdown pour les titres et les listes,
+        et utilise la syntaxe LaTeX (entre $) pour les formules mathématiques.
+
+        Texte de référence :
+        {contexte}
+        
+        Question de l'élève : {question_eleve}
+        """
+        
+        try:
+            response = client.models.generate_content(
+                model='gemini-3.6-flash',
+                contents=prompt
+            )
+            reponse_ia = response.text
+        except Exception as e:
+            reponse_ia = f"Erreur de l'IA : {str(e)}"
+
+    return render(request, 'core/assistant.html', {
+        'question': question_eleve,
+        'reponse': reponse_ia
+    })

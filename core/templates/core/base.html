@@ -13,6 +13,15 @@
     <!-- Notre CSS personnalisé -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <!-- MathJax pour afficher les formules mathématiques -->
+    <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -28,6 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accueil' %}">{% trans "Accueil" %}</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'assistant' %}">🤖 Assistant IA</a></li>
                     
                     {% if user.is_authenticated %}
                         <!-- Si connecté -->

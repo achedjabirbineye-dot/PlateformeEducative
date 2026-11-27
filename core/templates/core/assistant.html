@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+
+{% block title %}Assistant IA{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm mt-5">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">🤖 {% trans "Assistant Pédagogique" %}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Pose ta question sur le cours de Maths :" %}</label>
+                        <textarea name="question" class="form-control" rows="3" required>{% if question %}{{ question }}{% endif %}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">{% trans "Demander à l'IA" %}</button>
+                </form>
+
+                {% if reponse %}
+                <hr>
+                <h5>{% trans "Réponse de l'IA :" %}</h5>
+                <div class="alert alert-info" style="white-space: pre-wrap;">{{ reponse|safe }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

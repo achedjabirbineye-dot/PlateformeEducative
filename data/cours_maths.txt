@@ -1,0 +1,123 @@
+                       DERIVATION ET ETUDES DES FONCTIONS
+        Exercice N°1
+1.	Soit f la fonction définie sur ℝ par : f(0)=0 et pour tout x de ℝ*, f(x)=(1-cos x)/x.
+
+f est-elle dérivable en 0 ?
+
+2.	Soit g la fonction définie sur [−1;+∞[ par g(0)=1/2 et pour tout x non nul de [−1;+∞[, 
+
+g(x)=(√(1+x)-1)/x  g est-elle dérivable en 0 ?
+
+         Exercice N°2
+
+Dans chacun des cas suivants, déterminer la dérivée de la fonction f après avoir déterminé son ensemble de définition et l’ensemble sur lequel elle est dérivable.
+
+1.	f(x)=(〖2x〗^2+5x-1)/(7x-1)
+
+2.	f(x)=1/〖(3x-8)〗^3 
+
+3.	f(x)=x+√x+1/x
+
+4.	f(x)=(1-√x)/(1+√x)
+
+         Exercice N°3
+Dans chacun des cas suivants, déterminer la dérivée de la fonction f
+
+1.	f: ↦ sin(x-x^2)
+
+2.	f: ↦ cos(x^2+3x)
+
+3.	f: ↦ sin(3x-π/4)
+
+4.	f: ↦  (cos(3x+π))/4
+
+5.	f: ↦ √(3x^2+7)
+
+6.	f: ↦  1/√(x^2+x+1)
+ 
+         Exercice N°4
+1.	On considère la fonction polynôme P définie par : P(x)=2x^3-3x^2-1
+a)	Etudier les variations de P.
+b)	Démontrer que P(x) admet une solution réelle et une seule α et que α appartient à l’intervalle ]1,6 ; 1,7[.
+2.	Soit D l’ensemble des nombres strictement supérieur à −1. On considère la fonction f définie sur D par :
+f(x)=(1-x)/(1+x^3 )
+
+On désigne par C la courbe représentative de f dans le plan muni d’un repère orthonormé (on prendra comme unité 4cm). Etudier les variations de f et construire (C). (Utiliser les résultats du 1.)
+
+         Exercice N°5
+Soit (C) la courbe représentative dans un repère orthonormé (O,I,J) de la fonction f définie sur ℝ \ {1} par f(x)=x-2+1/(|x-1|)
+1.	Etudier les limites éventuelles de la fonction f aux bornes de l’ensemble de définition.
+2.	Etudier la dérivabilité de f en 1, puis interpréter.
+3.	Etudier le sens de variation de f.
+4.	Déterminer une équation de la tangente à (C) au point d’abscisse 0
+5.	Montrer que la droite d’équation y=x-2 est asymptote à (C)
+6.	Construire (C).
+         
+         Exercice N°6
+On considère la fonction numérique à variable réelle définie par :
+f(x)=3x-1+(x-1)/〖(x+1)〗^2  et on désigne par (C) sa courbe représentative dans un repère orthonormé (O,I,J). (Unité graphique 2cm).
+1.	Déterminer l’ensemble de définition D_f de f.
+2.	Etablir que la courbe (C) admet pour asymptote la droite (Δ) d’équation y=3x-1. On montrera que la courbe C coupe la droite (Δ) en un point dont on précisera les coordonnées. Etudier la position relative de (C) et(Δ).
+3.	Déterminer les point d’intersection de (C) avec les droites y=0 et y=2.
+4.	Démontrer que f'(x) peut s’écrire sous la forme : f'(x)=(xP(x))/〖(x+1)〗^3  où P est un polynôme du 2nd degré.
+5.	En déduire les variations de f.
+6.	Tracer (C).
+7.	a) Déterminer deux réels a et b tels que, ∀x∈D_f,(x-1)/〖(x+1)〗^2 =a/(x+1)+b/〖(x+1)〗^2 .
+b) Soit g la fonction numérique telle que : g(x)=(x-1)/〖(x+1)〗^2 . déterminer une primitive G de g sur ]1 ; +∞[ .
+         
+         Exercice N°7
+Soit f la fonction définie sur ℝ \ {1} par : f(x)=(x^2+αx+β)/(1-x), où α et β sont deux réels.
+On appelle (C) la courbe représentative dans un repère orthonormal d’unité 1cm.
+1.	Déterminer les réels α et β tels que la courbe (C) passe par le point A(2 ; 1) et admette en ce point une tangente (T) parallèle à la droite (D) d’équation y = 3x.
+Dans la suite du problème, α et β sont les réels trouvés précédemment.
+2.	a) Déterminer les trois réels a, b et c tels que, pour tout réels x distinct de 1 , on ait :
+f(x)=ax+b+c/(1-x)
+b)	En déduire l’existence d’une droite (Δ) asymptote à la courbe(C). Etudier la position relative de (C) et (Δ).
+3.	Etudier les variations de f et les limites aux bornes de son ensemble de définition.
+4.	a) Montrer les variations de f et les limites aux bornes de son ensemble définition.
+b)	Tracer l’asymptote (Δ) , la tangente (T) , puis la courbe (C) .
+
+         Exercice N°8
+Soit f et g deux fonctions définies par : f(x)=(x^2-4)/(x^2+4) et g(x)=√x.
+1.	préciser les ensembles de définitions de f et g.
+2.	On considère la fonction h définie par : h(x)=(g∘f)(x).
+a)	Donner l’expression de h en fonction de x.
+b)	Déterminer l’ensemble de définition de la fonction h.
+c)	Etudier la fonction h aux bornes de son ensemble de définition.
+3.	Calculer f'(x) et g'(x). En déduire h'(x).
+4.	Dresser le tableau de variation de h(x) .
+5.	Etudier la continuité et la dérivabilité de h en 2 en -2.
+6.	Tracer la courbe représentative (C_h) de h
+7.	Soit u la restriction de h sur [2 ; +∞[
+a)	Montrer que la fonction u réalise une bijection réciproque de [2 ; +∞[ vers un intervalle J que l’on précisera.
+b)	Dresser le tableau de variation de sa bijection réciproque notée u^(-1)
+c)	Tracer (C_(u^(-1) )).
+         
+         Exercice N°9
+Soit la fonction f définie sur I=|(1-x)/(1+x)|.
+On désigne par H sa représentation graphique dans un plan muni d’un repère orthonormé (O, I, J). (Unité graphique 1cm).
+1.	Etudier le signe de l’expression (1-x)/(1+x), puis définir la fonction par intervalles.
+En déduire l’existence d’asymptotes à la courbe H.
+2.	Etudier la dérivabilité de f en 1. En déduire que la courbe H admet deux demi tangente au point d’abscisse 1 dont on déterminera les équations réduites.
+3.	Tracer la courbe H, ses deux asymptotes et les deux demi tangentes.
+ 
+         Exercice N°10
+Soit f la fonction définie sur ℝ par : √(|x^2-6x+5|) et (C) sa courbe représentative dans un plan muni d’un repère orthonormal (o,i⃗,j⃗) (unité graphique : 1cm).
+1)	Etudier, suivant les valeurs de x, le signe du polynôme x^2-6x+5 et l’expression de f(x) sans le symbole « valeur absolue ».
+2)	Etudier la continuité et la dérivabilité de f, en particulier en 1 et en 5 ; la courbe admet-elle des tangentes en ces points ?
+3)	Etudier les variations de f.
+4)	Démontrer que la droite d’équation x = 3 est un axe de symétrie de (C).
+5)	Démontrer que les droites d’équations y = x+3 et y = -x + 3 sont asymptotes à la courbe (C).
+6)	Déterminer les coordonnées des points A et B d’intersection de la courbe (C) avec ses deux asymptotes, A étant le point dont l’abscisse est supérieure à 3.
+7)	Soit I le point de coordonnées (3 ;0). Démontrer que, pour tout x de l’intervalle [1; 5], le point M de coordonnées (x ;f(x)) est à une distance constante du point I. En déduire la nature géométrique de la courbe (C) lorsque 1 ≤ x ≤ 5.
+8)	Tracer (C) et ses asymptotes. Faire figurer A et B.
+         
+         Exercice N°11
+Soit la fonction f donnée par : f(x)=(1+cos 3x)/(〖cos〗^3 x) et (C) sa courbe représentative dans le plan muni d’un repère orthogonal.
+1)	Déterminer l’ensemble de définition D de f ;
+2)	Etudier la parité et la périodicité de f. En déduire qu’il suffit d’étudier la fonction f sur E = D ∩ [0; π[.
+3)	Déterminer les limites de f aux bornes de E.
+4)	Montrer que, pour tout x de D : f'(x)=(3 sin x(1-2cos x))/(〖cos〗^4 x).
+5)	Etudier le signe de (1-2cos x) sur E. En déduire les variations de f sur E.
+6)	Déterminer les coordonnées des points d’intersection de la courbe (C) avec l’axe (OX).
+7)	Tracer la courbe (C).

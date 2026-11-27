@@ -11,4 +11,5 @@ urlpatterns = [
     path('mes-favoris/', views.mes_favoris, name='mes_favoris'),
     path('favori/<int:ressource_id>/', views.ajouter_favori, name='ajouter_favori'),
     path('mes-favoris/', views.mes_favoris, name='mes_favoris'),
+    path('assistant/', views.assistant_ia, name='assistant'),
 ]
